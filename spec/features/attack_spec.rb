@@ -15,7 +15,18 @@ feature "attack player" do
     expect(page).to have_text("9")
   end
 
-end
+  scenario "switch players" do
+    sign_in_and_play
+    click_button "Attack!"
+    click_button "switch attack"
+    # expect(page).to have_text("Player 2s turn")
+  end
 
-# So I can start to win a game of Battle,
-# I want my attack to reduce Player 2's HP
+ scenario "back to player 1" do
+   click_button "Attack!"
+   click_button "switch attack"
+   click_button "Attack!"
+   expect(page).to have_text("Sara has attacked Mic")
+ end
+
+end
