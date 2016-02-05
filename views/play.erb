@@ -1,17 +1,23 @@
 <div>
+  <h1> Player 1 is <%= $game.player1.name %> </h1>
+  <h1> Player 2 is <%= $game.player2.name %> </h1>
+</div>
 
-  <p>
-    <%= @game.player1.name %>
-  <a> Hit Points </a>  <%=  @game.player1.hit_points %>
-  </p>
-  <p>
-    <%= @game.player2.name %>
-  <a> Hit Points </a>  <%= @game.player2.hit_points %>
-  </p>
+<div>
+  <h2> <%= $game.player1.name %>: <%=$game.player1.hit_points%>/10 HP</h2>
+  <h2> <%= $game.player2.name %>: <%=$game.player2.hit_points%>/10 HP</h2>
+</div>
 
+<div>
+  <h3> <%= $game.player_in_control.name %> is playing </h3>
+</div>
 
-<form action='/attack'>
-  <input type="submit" value="Attack!">
-</form>
+<div>
+
+  <form action='/attack' method='POST'>
+    <input type='submit' value='Attack'></input>
+  </form>
+
+  <img src="https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif">
 
 </div>
