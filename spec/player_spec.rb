@@ -18,7 +18,7 @@ describe Player do
 
   describe '#reduce_hit_points' do
     it "reduces hit points by 1" do
-      expect{sarah.reduce_hit_points.to change{sarah.hit_points}.by(-1)
+      expect{sarah.reduce_hit_points}.to change{sarah.hit_points}.by(-1)
     end
   end
 

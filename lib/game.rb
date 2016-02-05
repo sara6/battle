@@ -1,3 +1,5 @@
+require './lib/player'
+
 class Game
 
  attr_reader :player1, :player2, :player_in_control, :player_waiting
@@ -22,18 +24,9 @@ class Game
     end
   end
 
-end
+  def game_over?
+    # true
+   player1.hit_points==0 || player2.hit_points == 0
+  end
 
-  # def switcher
-  #   @switch ^= true
-  # end
-  #
-  # def choose_attacking_player
-  #   @player2.name if @switch == true
-  #   @player1.name if @switcher == false
-  # end
-  #
-  # def defending_player
-  #   @player2.receive_damage if @switch == false
-  #   @player1.receive_damage if @switcher == true
-  # end
+end

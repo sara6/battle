@@ -1,3 +1,4 @@
+
 class Player
 
   DEFAULT_HIT_POINTS = 10
@@ -12,6 +13,5 @@ class Player
   def reduce_hit_points
     @hit_points -= 1
   end
-
 
 end

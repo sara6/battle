@@ -5,28 +5,21 @@ feature "attack player" do
   scenario "User2 attacks player 1" do
     sign_in_and_play
     click_button "Attack!"
-    expect(page).to have_text("sarah has attacked mic!")
+    expect(page).to have_text("Attack on mic successful - reduced HP with 10")
   end
 
   scenario "reduce HP" do
     sign_in_and_play
     click_button "Attack!"
-    click_link "Back to battle"
+    click_button "Continue"
     expect(page).to have_text("9")
   end
 
   scenario "switch players" do
     sign_in_and_play
     click_button "Attack!"
-    click_button "switch attack"
-    # expect(page).to have_text("Player 2s turn")
+    click_button "Continue"
+    expect(page).to have_content("mic is playing")
   end
-
- scenario "back to player 1" do
-   click_button "Attack!"
-   click_button "switch attack"
-   click_button "Attack!"
-   expect(page).to have_text("Sara has attacked Mic")
- end
 
 end

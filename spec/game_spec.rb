@@ -1,10 +1,12 @@
 require 'game'
+require 'player'
 
 describe Game do
 
   subject(:game) { described_class.new(player1, player2) }
-  let(:player1) {double :player1, reduce_hit_points: true}
-  let(:player2) {double :player2, reduce_hit_points: true}
+  let(:player1) {double :player1, hit_points: 10, reduce_hit_points: true}
+  let(:player2) {double :player2, hit_points: 10, reduce_hit_points: true}
+  let(:dead_player) {double :deadplayer, hit_points: 0}
 
   describe 'initialize' do
 
@@ -17,17 +19,20 @@ describe Game do
 
   describe 'attack' do
 
-    it 'calls reduce hit points on a player' do
-      expect(player2).to receive(:reduce_hit_points)
-      game.attack
-      #why game.attack below expect?
+    it 'switches the player in control' do
+      player2.reduce_hit_points
+      expect(game.player_in_control).to eq(player1)
     end
 
-    it 'switches the player in control' do
-      game.attack
-      expect(game.player_in_control). to eq(player2)
+  end
+
+  describe '#game over?' do
+    subject(:game2) { described_class.new(player1, dead_player) }
+
+    it 'returns true when hit points equals 0' do
+        expect(game2.game_over?).to eq true
     end
-    
+
   end
 
 end
